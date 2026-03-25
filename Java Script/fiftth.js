@@ -56,16 +56,15 @@
 
 
 async function getData() {
+    console.log("Start");
 
     let response = await fetch("https://jsonplaceholder.typicode.com/posts?Dolittle");
-
-
 
 
     let data = await response.json();
 
     console.log(data);
-
+    console.log("end");
 }
 
 getData();
