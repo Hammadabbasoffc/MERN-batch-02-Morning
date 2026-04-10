@@ -15,6 +15,8 @@ connectDB()
 
 app.use(express.json())
 app.use(cookieParser())
+app.use("/uploads", express.static("uploads")) // Serve static files from the "uploads" directory
+app.use(express.urlencoded({ extended: true })) // To parse URL-encoded data (for form submissions)
 
 app.use("/api/v1/users", userRouter)
 app.use("/api/v1/tasks", taskRouter)

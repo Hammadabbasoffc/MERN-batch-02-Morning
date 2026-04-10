@@ -13,6 +13,11 @@ const taskSchema = new mongoose.Schema({
         type: Boolean,
         default: false
     },
+    image:
+    {
+        type: String, // Store the file path or URL of the uploaded image
+        default: null
+    },
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",

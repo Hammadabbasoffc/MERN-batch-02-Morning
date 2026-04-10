@@ -24,7 +24,8 @@ const isLoggedin = (req, res, next) => {
 
     } catch (error) {
         res.status(500).json({
-            message: "Something went Wrong"
+            message: "Something went Wrong",
+            error
         })
     }
 }
