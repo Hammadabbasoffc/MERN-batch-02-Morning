@@ -16,11 +16,31 @@ const createTask = async (req, res) => {
 
 
 
+
+
     if (!title || !description) {
+        if (req.file) {
+            fs.unlink(req.file.path, (err) => {
+                if (err) {
+                    console.error("Error deleting file:", err);
+                } else {
+                    console.log("Uploaded file deleted due to missing fields");
+                }
+            });
+        }
         return res.status(400).json({ message: "Title and description are required" })
     }
 
     if (!userId) {
+        if (req.file) {
+            fs.unlink(req.file.path, (err) => {
+                if (err) {
+                    console.error("Error deleting file:", err);
+                } else {
+                    console.log("Uploaded file deleted due to missing fields");
+                }
+            });
+        }
         return res.status(400).json({ message: "User Id is required" })
     }
 
@@ -31,6 +51,15 @@ const createTask = async (req, res) => {
         })
 
         if (!newTask) {
+            if (req.file) {
+                fs.unlink(req.file.path, (err) => {
+                    if (err) {
+                        console.error("Error deleting file:", err);
+                    } else {
+                        console.log("Uploaded file deleted due to missing fields");
+                    }
+                });
+            }
             return res.status(400).json(
                 { message: "Failed to create task" }
             )
@@ -44,6 +73,15 @@ const createTask = async (req, res) => {
         )
 
     } catch (error) {
+        if (req.file) {
+            fs.unlink(req.file.path, (err) => {
+                if (err) {
+                    console.error("Error deleting file:", err);
+                } else {
+                    console.log("Uploaded file deleted due to missing fields");
+                }
+            });
+        }
         return res.status(500).json({ message: "Error creating task", error })
     }
 

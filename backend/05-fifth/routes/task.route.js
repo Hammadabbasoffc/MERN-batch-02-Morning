@@ -5,7 +5,7 @@ import upload from "../middlewares/multer.js";
 
 const taskRouter = Router()
 
-taskRouter.post("/create-task", isLoggedin, upload.single("image"), createTask)
+taskRouter.post("/create-task", isLoggedin, upload.array("images", 4), createTask)
 taskRouter.get("/my-tasks", isLoggedin, getMyTasks)
 taskRouter.put("/update-task/:taskId", isLoggedin, updateTask)
 taskRouter.delete("/delete-task/:taskId", isLoggedin, deleteTask)
